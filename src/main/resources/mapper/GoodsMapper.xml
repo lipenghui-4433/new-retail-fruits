@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.dingdong.mapper.GoodsMapper">
+    <resultMap id="BaseResultMap" type="cn.dingdong.model.Goods">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="goodsType" property="goodsType" jdbcType="VARCHAR"/>
+        <result column="activityType" property="activityType" jdbcType="VARCHAR"/>
+        <result column="status" property="status" jdbcType="VARCHAR"/>
+        <result column="basePrice" property="basePrice" jdbcType="DECIMAL"/>
+        <result column="activiPrice" property="activiPrice" jdbcType="DECIMAL"/>
+        <result column="pellPrice" property="pellPrice" jdbcType="DECIMAL"/>
+        <result column="killPrice" property="killPrice" jdbcType="DECIMAL"/>
+        <result column="reservePrice" property="reservePrice" jdbcType="DECIMAL"/>
+        <result column="fromHome" property="fromHome" jdbcType="VARCHAR"/>
+        <result column="specs" property="specs" jdbcType="VARCHAR"/>
+        <result column="tags" property="tags" jdbcType="VARCHAR"/>
+        <result column="packingType" property="packingType" jdbcType="VARCHAR"/>
+        <result column="weight" property="weight" jdbcType="VARCHAR"/>
+        <result column="life" property="life" jdbcType="VARCHAR"/>
+        <result column="putType" property="putType" jdbcType="VARCHAR"/>
+        <result column="details" property="details" jdbcType="VARCHAR"/>
+        <result column="remark" property="remark" jdbcType="VARCHAR"/>
+        <result column="args1" property="args1" jdbcType="VARCHAR"/>
+        <result column="args2" property="args2" jdbcType="VARCHAR"/>
+        <result column="args3" property="args3" jdbcType="VARCHAR"/>
+        <result column="createTime" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="updateTime" property="updateTime" jdbcType="TIMESTAMP"/>
+        <result column="createby" property="createby" jdbcType="VARCHAR"/>
+        <result column="updateby" property="updateby" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id,`name`,goodsType,activityType,status,basePrice,activiPrice,pellPrice,killPrice,reservePrice,fromHome,specs,tags, packingType,weight,life,putType,details,createTime, remark,updateTime,args1,args2,args3, createby, updateby
+</sql>
+    <select id="selFruitsParameter" parameterType="java.util.Map"
+            resultType="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM platformfilter
+        <trim prefix="WHERE" prefixOverrides="AND|OR">
+            <if test="id!=null and id!=''">
+                AND id=#{id}
+            </if>
+            <if test="name!=null and name!=''">
+                AND name LIKE
+                CONCAT(CONCAT('%',#{name}),
+                '%')
+            </if>
+            <if test="mallType!=null and mallType!=''">
+                AND mallType=#{mallType}
+            </if>
+            <if test="status!=null and status!=''">
+                AND status=#{status}
+            </if>
+            <if test="fromHome!=null and fromHome!=''">
+                AND fromHome=#{fromHome}
+            </if>
+            <if test="tags!=null and tags!=''">
+                AND tags=#{tags}
+            </if>
+            <if test="timeStart!=null and timeStart!=''">
+                <![CDATA[   and DATE_FORMAT(createTime, '%Y-%m-%d')>=  DATE_FORMAT(#{timeStart}, '%Y-%m-%d')   ]]>
+            </if>
+            <if test="timeEnd!=null and timeEnd!=''">
+                <![CDATA[  and DATE_FORMAT(createTime, '%Y-%m-%d') <= DATE_FORMAT(#{timeEnd}, '%Y-%m-%d')    ]]>
+            </if>
+        </trim>
+        <if test="startindex!=null and pageSize!=null">
+            limit #{startindex},#{pageSize}
+        </if>
+        order by updateTime Desc
+    </select>
+
+    <update id="updateByPrimaryKey" parameterType="cn.dingdong.model.Goods">
+        update platformfilter
+        SET
+        updateTime= SYSDATE()
+        <if test="name != null">
+            ,name = #{name,jdbcType=VARCHAR}
+        </if>
+        <if test="mallType != null">
+            ,mallType = #{mallType,jdbcType=VARCHAR}
+        </if>
+        <if test="status != null">
+            ,status = #{status,jdbcType=VARCHAR}
+        </if>
+        <if test="basePrice != null">
+            ,basePrice = #{basePrice,jdbcType=DECIMAL}
+        </if>
+        <if test="activiPrice != null">
+            ,activiPrice = #{activiPrice,jdbcType=DECIMAL}
+        </if>
+        <if test="pellPrice != null">
+            ,pellPrice = #{pellPrice,jdbcType=DECIMAL}
+        </if>
+        <if test="killPrice != null">
+            ,killPrice = #{killPrice,jdbcType=DECIMAL}
+        </if>
+        <if test="reservePrice != null">
+            ,reservePrice = #{reservePrice,jdbcType=DECIMAL}
+        </if>
+        <if test="fromHome != null">
+            ,fromHome = #{fromHome,jdbcType=VARCHAR}
+        </if>
+        <if test="specs != null">
+            ,specs = #{specs,jdbcType=VARCHAR}
+        </if>
+        <if test="tags != null">
+            ,tags = #{tags,jdbcType=VARCHAR}
+        </if>
+        <if test="packingType != null">
+            ,packingType = #{packingType,jdbcType=VARCHAR}
+        </if>
+        <if test="weight != null">
+            ,weight = #{weight,jdbcType=VARCHAR}
+        </if>
+        <if test="details != null">
+            ,details = #{details,jdbcType=VARCHAR}
+        </if>
+        <if test="remark != null">
+            ,remark = #{remark,jdbcType=VARCHAR}
+        </if>
+        <if test="details != null">
+            ,details = #{details,jdbcType=VARCHAR}
+        </if>
+        <if test="ags1 != null">
+            ,details = #{details,jdbcType=VARCHAR}
+        </if>
+        <if test="ags2 != null">
+            ,ags2 = #{ags2,jdbcType=VARCHAR}
+        </if>
+        <if test="ags3 != null">remark
+            ,ags3 = #{ags3,jdbcType=VARCHAR}
+        </if>
+        <if test="createTime != null">
+            ,createTime = #{createTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="createby != null">
+            ,createby = #{createby,jdbcType=VARCHAR}
+        </if>
+        <if test="updateby != null">
+            ,updateby = #{updateby,jdbcType=VARCHAR}
+        </if>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+
+</mapper>

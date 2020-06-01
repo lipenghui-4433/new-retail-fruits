@@ -22,8 +22,6 @@ public class UserController {
     public ResponseDTO saveUser(){
         User user = new User();
         user.setName("qiangde");
-        user.setAge(120);
-        //userService.save(user);
         userRepository.save(user);
         return new ResponseDTO(ResponseStatusEnum.SUCCESS.getCode(),ResponseStatusEnum.SUCCESS.getMsg());
     }

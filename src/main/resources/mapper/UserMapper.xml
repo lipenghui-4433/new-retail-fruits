@@ -4,14 +4,12 @@
     <resultMap id="resultMap" type="cn.dingdong.model.User">
         <id column="id" property="id" jdbcType="VARCHAR"/>
         <result column="name" property="name" jdbcType="VARCHAR"/>
-        <result column="age" property="age" jdbcType="INTEGER"/>
+        <result column="wechatName" property="wechatName" jdbcType="VARCHAR"/>
+        <result column="wechatId" property="wechatId" jdbcType="VARCHAR"/>
+        <result column="openId" property="openId" jdbcType="VARCHAR"/>
+        <result column="sex" property="sex" jdbcType="VARCHAR"/>
+        <result column="phone" property="phone" jdbcType="VARCHAR"/>
+        <result column="createby" property="createby" jdbcType="VARCHAR"/>
+        <result column="createTime" property="createTime" jdbcType="TIMESTAMP"/>
     </resultMap>
-    <insert id="save" parameterType="cn.dingdong.model.User">
-        INSERT INTO user (`name`,age)
-        VALUES
-        (
-        #{name},
-        #{age}
-        )
-    </insert>
 </mapper>
