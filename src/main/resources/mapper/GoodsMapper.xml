@@ -58,12 +58,6 @@
             <if test="tags!=null and tags!=''">
                 AND tags=#{tags}
             </if>
-            <if test="timeStart!=null and timeStart!=''">
-                <![CDATA[   and DATE_FORMAT(createTime, '%Y-%m-%d')>=  DATE_FORMAT(#{timeStart}, '%Y-%m-%d')   ]]>
-            </if>
-            <if test="timeEnd!=null and timeEnd!=''">
-                <![CDATA[  and DATE_FORMAT(createTime, '%Y-%m-%d') <= DATE_FORMAT(#{timeEnd}, '%Y-%m-%d')    ]]>
-            </if>
         </trim>
         <if test="startindex!=null and pageSize!=null">
             limit #{startindex},#{pageSize}
