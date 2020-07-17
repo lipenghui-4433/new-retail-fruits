@@ -22,7 +22,7 @@ public class GoodsServiceImpl implements GoodsService {
 
     @Override
     public List<Goods> list(Map<String, Object> map) {
-        return goodsMapper.selFruitsParameter(map);
+        return goodsMapper.selectByMap(map);
     }
 
     @Override
@@ -39,7 +39,7 @@ public class GoodsServiceImpl implements GoodsService {
     @Override
     public boolean updateProduct(Goods goods) {
         try {
-            int i = goodsMapper.updateByPrimaryKey(goods);
+            int i = goodsMapper.updateById(goods);
             return i==1;
         } catch (Exception e) {
             e.printStackTrace();

@@ -1,14 +1,16 @@
 package cn.dingdong.mapper;
 
 import cn.dingdong.model.Address;
-import org.apache.ibatis.annotations.Mapper;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
-import java.util.List;
-import java.util.Map;
-
-@Mapper
-public interface AddressMapper {
-
-    public List<Address> list(Map<String,Object> map);
+/**
+ * <p>
+ *  Mapper 接口
+ * </p>
+ *
+ * @author jobob
+ * @since 2020-07-17
+ */
+public interface AddressMapper extends BaseMapper<Address> {
 
 }

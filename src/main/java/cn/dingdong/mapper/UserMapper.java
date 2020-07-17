@@ -1,9 +1,16 @@
 package cn.dingdong.mapper;
 
 import cn.dingdong.model.User;
-import org.apache.ibatis.annotations.Mapper;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
-@Mapper
-public interface UserMapper {
-    void  save (User uer);
+/**
+ * <p>
+ *  Mapper 接口
+ * </p>
+ *
+ * @author jobob
+ * @since 2020-07-17
+ */
+public interface UserMapper extends BaseMapper<User> {
+
 }

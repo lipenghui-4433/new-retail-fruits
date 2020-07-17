@@ -4,7 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.sql.Date;
+import java.util.Date;
 
 @Data
 @Entity
@@ -16,8 +16,12 @@ public class Goods {
     private Integer id;
     @Column(name="name")
     private String name;
+    @Column(name="productName")
+    private String productName;  //产品分类名称 1，休闲食品 2.生鲜水果 3，化妆美品
+    @Column(name="productId")
+    private String productId;  //产品id
     @Column(name="goodsType")
-    private String goodsType;  //产品类型 1，新鲜水果 2.美味零食
+    private String goodsType;  //商品类型 1，零食 2.速食 3.酒类
     @Column(name="activityType")
     private String activityType;  //活动类型 1，普通商品 2.团购  3.秒杀（抢购）
     @Column(name="status")

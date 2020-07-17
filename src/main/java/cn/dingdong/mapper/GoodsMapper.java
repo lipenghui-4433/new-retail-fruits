@@ -1,18 +1,16 @@
 package cn.dingdong.mapper;
 
 import cn.dingdong.model.Goods;
-import cn.dingdong.model.User;
-import org.apache.ibatis.annotations.Mapper;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
-import java.util.List;
-import java.util.Map;
-
-@Mapper
-public interface GoodsMapper {
-
-    List<Goods> selFruitsParameter(Map<String, Object> map);
-
-    int updateByPrimaryKey(Goods goods);
-
+/**
+ * <p>
+ *  Mapper 接口
+ * </p>
+ *
+ * @author jobob
+ * @since 2020-07-17
+ */
+public interface GoodsMapper extends BaseMapper<Goods> {
 
 }

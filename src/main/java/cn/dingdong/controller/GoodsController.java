@@ -24,8 +24,8 @@ public class GoodsController {
         CommonResponse commonResponse = new CommonResponse();
         try {
             Map<String, Object> map = new HashMap<>();
-            List<Goods> list = goodsService.list(map);
-            commonResponse.setData(list);
+            //List<Goods> list = goodsService.list(map);
+            //commonResponse.setData(list);
             return commonResponse;
         } catch (Exception e) {
             e.printStackTrace();

@@ -22,7 +22,7 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     public List<Address> list(Map<String, Object> map) {
-        return addressMapper.list(map);
+        return addressMapper.selectByMap(map);
     }
 
     @Override
